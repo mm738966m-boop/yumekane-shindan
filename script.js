@@ -183,8 +183,17 @@ let currentResult = null;
 // 画面遷移
 // ==========================================
 function showScreen(screenId) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('screen-active'));
-  document.getElementById(screenId).classList.add('screen-active');
+  // すべての画面を非表示に
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('screen-active');
+    s.style.display = 'none';
+  });
+  // 指定された画面のみ表示
+  const targetScreen = document.getElementById(screenId);
+  if (targetScreen) {
+    targetScreen.classList.add('screen-active');
+    targetScreen.style.display = 'block';
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
