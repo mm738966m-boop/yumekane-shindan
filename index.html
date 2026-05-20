@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ユメカネお金の診断室 - あなたは日本昔話のどのタイプ？</title>
+<meta name="description" content="1分でわかる、お金のキャラ診断。日本昔話の8人の主人公から、あなたのお金との付き合い方タイプを診断します🌷">
+
+<meta property="og:title" content="ユメカネお金の診断室">
+<meta property="og:description" content="あなたは日本昔話の8タイプの誰？1分でわかるお金のキャラ診断🌷">
+<meta property="og:type" content="website">
+
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+<!-- ========================================== -->
+<!-- スタート画面 -->
+<!-- ========================================== -->
+<section id="screen-start" class="screen screen-active">
+  <div class="start-bg-decoration">
+    <span class="deco deco-1">🌸</span>
+    <span class="deco deco-2">🍑</span>
+    <span class="deco deco-3">🌙</span>
+    <span class="deco deco-4">⭐</span>
+    <span class="deco deco-5">🐢</span>
+    <span class="deco deco-6">🪶</span>
+  </div>
+
+  <div class="start-content">
+    <div class="start-badge">🌷 ユメカネお金の診断室 🌷</div>
+
+    <h1 class="start-title">
+      <span class="title-line title-line-1">あなたは、</span>
+      <span class="title-line title-line-2">日本昔話の</span>
+      <span class="title-line title-line-3">どのタイプ？</span>
+    </h1>
+
+    <p class="start-subtitle">8人の主人公から、<br>あなたの「お金との付き合い方」を診断</p>
+
+    <div class="tag-row">
+      <span class="tag">⏱ 1分で完了</span>
+      <span class="tag">📱 直感で答えるだけ</span>
+      <span class="tag">🎁 結果は無料</span>
+    </div>
+
+    <!-- 8タイプ画像プレビュー -->
+    <div class="type-preview">
+      <div class="type-preview-grid">
+        <img src="images/01_momotaro.png" alt="桃太郎">
+        <img src="images/02_kintaro.png" alt="金太郎">
+        <img src="images/03_warashibe.png" alt="わらしべ長者">
+        <img src="images/04_issunboshi.png" alt="一寸法師">
+        <img src="images/05_kaguyahime.png" alt="かぐや姫">
+        <img src="images/06_tsuru.png" alt="鶴の恩返し">
+        <img src="images/07_orihime.png" alt="織姫">
+        <img src="images/08_otohime.png" alt="乙姫">
+      </div>
+      <p class="type-preview-caption">この8人の中の、あなたはどれ？</p>
+    </div>
+
+    <button class="start-button" onclick="startDiagnosis()">
+      <span class="start-button-text">診断スタート</span>
+      <span class="start-button-arrow">→</span>
+    </button>
+
+    <p class="start-note">※ 全8問・所要時間 約1分</p>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- 質問画面 -->
+<!-- ========================================== -->
+<section id="screen-question" class="screen">
+  <header class="question-header">
+    <div class="header-brand">🌷 ユメカネお金の診断室</div>
+    <div class="progress-container">
+      <div class="progress-info">
+        <span id="current-question-num">1</span>
+        <span class="progress-separator">/</span>
+        <span class="progress-total">8</span>
+      </div>
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="question-content">
+    <div class="question-card">
+      <div class="question-number-decoration" id="question-icon">🍑</div>
+      <h2 class="question-text" id="question-text">質問テキスト</h2>
+
+      <div class="answer-options" id="answer-options">
+        <!-- 選択肢はJavaScriptで動的生成 -->
+      </div>
+    </div>
+
+    <div class="question-actions">
+      <button id="back-button" class="back-button" onclick="goBack()">← 前に戻る</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- LINE登録案内画面 -->
+<!-- ========================================== -->
+<section id="screen-line-register" class="screen">
+  <div class="line-register-content">
+    <div class="line-register-decoration">
+      <span class="line-deco">🎉</span>
+    </div>
+
+    <h2 class="line-register-title">
+      診断、お疲れさまでした!
+    </h2>
+
+    <p class="line-register-message">
+      あなたのタイプが判明しました…
+    </p>
+
+    <div class="result-pending">
+      <div class="result-pending-card">
+        <p class="result-pending-text">結果は<strong>LINEのお友だち追加</strong>で<br>受け取れます🌷</p>
+
+        <ul class="register-benefits">
+          <li>あなたのタイプの詳しい解説</li>
+          <li>森川からの「あなただけ」メッセージ</li>
+          <li>お金の勉強会(無料)のご案内</li>
+        </ul>
+
+        <a href="#" id="line-register-button" class="line-register-button" onclick="trackLineRegister()">
+          <span class="line-icon">💬</span>
+          <span class="line-button-text">LINEで友だち追加して結果を見る</span>
+        </a>
+
+        <p class="line-register-note">
+          ※ 登録は無料です<br>
+          ※ いつでも友だち解除できます
+        </p>
+
+        <div class="browser-warning">
+          ⚠️ 登録後はすぐにLINEを開いて、<br>
+          メッセージから結果を受け取ってください
+        </div>
+      </div>
+    </div>
+
+    <button class="skip-line-button" onclick="showResult()">
+      LINE登録なしで結果を見る →
+    </button>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- 結果画面 -->
+<!-- ========================================== -->
+<section id="screen-result" class="screen">
+  <div class="result-content">
+    <div class="result-header">
+      <div class="result-badge">🌷 診断結果</div>
+      <p class="result-greeting">あなたのタイプは...</p>
+    </div>
+
+    <div class="result-reveal">
+      <h2 class="result-type-name" id="result-type-name">桃太郎タイプ</h2>
+      <p class="result-type-tagline" id="result-type-tagline">目標決めたら、鬼ヶ島まで走るタイプ</p>
+    </div>
+
+    <div class="result-image-container">
+      <img id="result-image" src="" alt="あなたのタイプ" class="result-image">
+    </div>
+
+    <div class="result-message-card">
+      <div class="result-message-label">🌸 森川からのメッセージ</div>
+      <p id="result-morikawa-message" class="result-message-text">
+        メッセージ
+      </p>
+    </div>
+
+    <div class="result-share">
+      <p class="result-share-label">結果、面白かったら友達にもシェアしてみてね🌷</p>
+      <div class="share-buttons">
+        <button class="share-button share-line" onclick="shareToLine()" aria-label="LINEでシェア">
+          <span class="share-icon">💬</span>
+          <span class="share-label">LINE</span>
+        </button>
+        <button class="share-button share-x" onclick="shareToX()" aria-label="Xでシェア">
+          <span class="share-icon">𝕏</span>
+          <span class="share-label">X</span>
+        </button>
+        <button class="share-button share-threads" onclick="shareToThreads()" aria-label="Threadsでシェア">
+          <span class="share-icon">@</span>
+          <span class="share-label">Threads</span>
+        </button>
+        <button class="share-button share-instagram" onclick="shareToInstagram()" aria-label="Instagramでシェア">
+          <span class="share-icon">📷</span>
+          <span class="share-label">Instagram</span>
+        </button>
+      </div>
+      <p class="result-share-note">「私は○○タイプだったよ!」って、家族で話すきっかけに🌸</p>
+    </div>
+
+    <div class="result-cta">
+      <p class="result-cta-label">🌸 もっと詳しく知りたい方へ</p>
+      <a href="#" id="result-line-cta" class="result-cta-button">
+        <span>LINEで詳しい解説を受け取る</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <p class="result-cta-note">あなたのタイプの詳しい解説と、<br>森川からの「あなただけ」メッセージをお届けします🌷</p>
+    </div>
+
+    <button class="restart-button" onclick="restartDiagnosis()">
+      もう一度診断する
+    </button>
+
+    <footer class="result-footer">
+      <p class="footer-brand">🌷 ユメカネお金の診断室</p>
+      <p class="footer-credit">監修：森川 満章 / fulfull株式会社</p>
+    </footer>
+  </div>
+</section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
