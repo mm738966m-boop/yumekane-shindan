@@ -543,10 +543,8 @@ body {
 ========================================== */
 #screen-line-register {
   background: linear-gradient(180deg, var(--color-cream-light), #FFE6D3);
-  padding: 40px 20px;
+  padding: 20px 20px 40px;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
 }
 
 .line-register-content {
@@ -554,33 +552,38 @@ body {
   text-align: center;
 }
 
-.line-register-decoration {
-  font-size: 4rem;
-  margin-bottom: 20px;
-  animation: bounce 1s ease-out;
+/* ヒーロー画像（診断お疲れ様画像） */
+.line-register-hero {
+  margin: 0 -20px 20px;
+  padding: 0;
+  animation: heroFadeIn 0.8s ease-out;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-15px); }
-  60% { transform: translateY(-5px); }
+.hero-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0;
 }
 
-.line-register-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: var(--color-brown-deep);
-  margin-bottom: 12px;
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
+/* 古い装飾は非表示 */
+.line-register-decoration,
+.line-register-title,
 .line-register-message {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--color-orange-deep);
-  font-weight: 600;
-  margin-bottom: 24px;
-  letter-spacing: 0.05em;
+  display: none;
 }
 
 .result-pending-card {
