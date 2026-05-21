@@ -7,7 +7,7 @@
 // ==========================================
 const CONFIG = {
   // LINE登録URL（ユメカネお金の診断室・公式LINE）
-  LINE_REGISTER_URL: 'https://lin.ee/Tpi8Xg3',
+  LINE_REGISTER_URL: 'https://utage-system.com/line/open/JnyasoJS9rlr',
 
   // サイトURL（シェア用、Netlifyデプロイ後に実URLに差し替え）
   SITE_URL: 'https://yumekane-shindan.netlify.app',
